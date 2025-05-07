@@ -2,11 +2,28 @@
 import pandas as pd
 from neal import SimulatedAnnealingSampler
 from qubo_builder import build_qubo
-def solve(reads=200):
-    Q = build_qubo()
+
+def solve(n_reads=500):
+    Q, binaries, spec = build_qubo()
     sampler = SimulatedAnnealingSampler()
-    res = sampler.sample_qubo(Q, num_reads=reads)
-    df = pd.DataFrame([{'lambda_neg': -0.8*s[0], 'mass': 120*s[0]} for s in res.record.sample])
-    df.to_csv('results.csv', index=False)
-if __name__=='__main__':
-    solve()
+    response = sampler.sample_qubo(Q, num_reads=n_reads)
+
+    records = []
+    # сопоставим порядок битов и имён
+    var_order = list(binaries.keys())
+
+    for sample, _ in zip(response.record.sample, response.record.energy):
+        sel = dict(zip(var_order, sample))
+
+        lambda_neg = 0
+        mass = 0
+        for name, bit in sel.items():
+            cfg = spec["options"][name]
+            lambda_neg += cfg["effect_lambda"] * bit
+            mass       += cfg["weight"]       * bit
+
+        records.append({"lambda_neg": lambda_neg, "mass": mass})
+
+    df = pd.DataFrame(records)
+    df.to_csv("results.csv", index=False)
+    return df

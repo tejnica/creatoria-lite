@@ -1,12 +1,18 @@
-
 name: radiator_demo
+
 objectives:
   - id: lambda_neg
-    description: "минус теплопроводность"
+    description: "Low thermal conductivity"
   - id: mass
-    description: "масса"
+    description: "mass"
+
 options:
   cell_thickness:
     bits: 1
     weight: 120
     effect_lambda: -0.8
+
+  fin_height:
+    bits: 1
+    weight: 40
+    effect_lambda: -0.5

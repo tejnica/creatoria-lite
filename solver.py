@@ -6,7 +6,7 @@ from qubo_builder import build_qubo
 def solve(n_reads=500):
     Q, binaries, spec = build_qubo()
     sampler = SimulatedAnnealingSampler()
-    response = sampler.sample_qubo(Q, num_reads=n_reads)
+    response = sampler.sample_qubo(Q, num_reads=n_reads, num_sweeps=2000)
 
     records = []
     # сопоставим порядок битов и имён

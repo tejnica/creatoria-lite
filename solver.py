@@ -1,4 +1,3 @@
-
 import pandas as pd
 from neal import SimulatedAnnealingSampler
 from qubo_builder import build_qubo
@@ -6,10 +5,9 @@ from qubo_builder import build_qubo
 def solve(n_reads=500):
     Q, binaries, spec = build_qubo()
     sampler = SimulatedAnnealingSampler()
-    response = sampler.sample_qubo(Q, num_reads=n_reads)
+    response = sampler.sample_qubo(Q, num_reads=n_reads, num_sweeps=2000)
 
     records = []
-    # сопоставим порядок битов и имён
     var_order = list(binaries.keys())
 
     for sample, _ in zip(response.record.sample, response.record.energy):
@@ -27,3 +25,6 @@ def solve(n_reads=500):
     df = pd.DataFrame(records)
     df.to_csv("results.csv", index=False)
     return df
+
+if __name__ == "__main__":
+    solve()

@@ -31,4 +31,4 @@ python run_demo.py
 | cell_thickness | 1    | 80     | −0.9        |
 | fin_height     | 1    | 60     | −0.7        |
 
-© 2025 Eduards Cunskis – MIT license
+© 2025 Eduards Cunskis  – MIT license

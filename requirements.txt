@@ -1,1 +1,6 @@
-pyyaml pyqubo neal pymoo matplotlib pandas
+pyyaml
+pyqubo
+dwave-neal
+pymoo
+matplotlib
+pandas

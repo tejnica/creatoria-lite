@@ -2,9 +2,10 @@
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tejnica/quantriz-v0/blob/main/run_demo.py)
 
-# QuanTriz-lite
+# Creatoria-lite
 
-Minimal working open-source prototype: YAML → QUBO → Simulated Annealing → CSV → Pareto
+Creatoria-lite is a minimal open-source prototype for design creation and optimization,
+featuring a pipeline: YAML → QUBO → Simulated Annealing → CSV → Pareto.
 
 ## Quick Start
 
@@ -31,4 +32,4 @@ python run_demo.py
 | cell_thickness | 1    | 80     | −0.9        |
 | fin_height     | 1    | 60     | −0.7        |
 
-© 2025 Eduards Cunskis  – MIT license
+© 2025 Eduard Tsunsky  – MIT license
